@@ -8,11 +8,6 @@ run_openconnect() {
         sleep 5
     done
 }
+run_openconnect &
 
-wait_for_exit_node_usage() {
-    while true; do
-        echo "Waiting for exit node usage..."
-        sleep 5
-    done
-}
 #export VPN_SUBNET=134.28.0.0/16
