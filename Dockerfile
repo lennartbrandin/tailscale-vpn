@@ -4,7 +4,7 @@ ENV VPN_TYPE=$VPN_TYPE
 ARG VPN_NAME
 ENV VPN_NAME=$VPN_NAME
 
-RUN apk add --no-cache tailscale wireguard-tools openconnect
+RUN apk add --no-cache tailscale wireguard-tools openconnect iptables
 
 WORKDIR /vpn
 COPY start-${VPN_TYPE}.sh .
