@@ -1,5 +1,6 @@
 *.conf
 *.pem
+*.ovpn
 *.yaml
 *-data/
 .upignore

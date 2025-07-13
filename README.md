@@ -3,11 +3,31 @@ This project provides a docker image to running tailscale alongside a vpn client
 ## Usage
 Set the files as described below and run `docker-compose up -d`.
 Run `docker-compose logs -f` to see the logs and find the tailscale login link.
+### Wireguard
+Specify `docker-compose.yaml`, example:
+```yaml
+services:
+  myfavoritevpn0:
+    build:
+      context: .
+      args:
+        # ! This makes up the name of the vpn config file e.g wireguard-myv
+        - VPN_TYPE=wireguard
+        - VPN_NAME=myvpn # This is also the tailscale node name
+    volumes:
+      - ./myvpn0-data:/var/lib/tailscale
+    cap_add:
+      - NET_ADMIN
+    privileged: true
+    restart: unless-stopped
+```
+Put your config file as `wireguard-myvpn.conf` in the same directory as `compose.yaml`.
+
 ### Openconnect
 Specify `docker-compose.yaml`, example:
 ```yaml
 services:
-  vpn-myfavoritevpn:
+  myfavoritevpn1:
     build:
       context: .
       args:
@@ -19,11 +39,11 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - ./myvpn-data:/var/lib/tailscale
+      - ./myvpn1-data:/var/lib/tailscale
     privileged: true
     restart: unless-stopped
 ```
-Put your config file as `openconnect-myvpn.conf` in the same directory as `docker-compose.yaml`.
+Put your config file as `openconnect-myvpn.conf` in the same directory as `compose.yaml`.
 If you use a CA cert, also save it as `openconnect-myvpn.pem` in the same directory.
 E.g:
 ```bash
