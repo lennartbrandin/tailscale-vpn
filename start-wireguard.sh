@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cp $VPN_TYPE-$VPN_NAME.conf /etc/wireguard/wg0.conf
 wg-quick up wg0
 ip rule show | grep -q '51820' || ip rule add from $(ip -4 addr show wg0 | awk '/inet/ {print $2}' | cut -d/ -f1) table 51820

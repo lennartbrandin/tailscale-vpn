@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #echo $Password | openconnect --background --user=$User --cafile=$CACert --protocol=$Protocol --passwd-on-stdin $Host
 run_openconnect() {
     while true; do
