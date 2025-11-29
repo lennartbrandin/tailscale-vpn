@@ -2,6 +2,6 @@
 *.pem
 *.ovpn
 *.auth
-*.yaml
+compose.yaml
 *-data/
 .upignore

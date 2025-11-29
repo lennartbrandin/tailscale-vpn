@@ -9,5 +9,3 @@ run_openconnect() {
     done
 }
 run_openconnect &
-
-#export VPN_SUBNET=134.28.0.0/16
